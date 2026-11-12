@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全身式安全帶安全檢查表 Full Body Harness Safety Checklist</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 12px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .header h2 {
+            margin: 0 0 4px 0;
+            color: #0056b3;
+            font-size: 19px;
+            line-height: 1.3;
+        }
+        .header .sub-h2 {
+            font-size: 15px;
+            color: #0056b3;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .project-title {
+            font-size: 13px;
+            color: #555;
+            font-weight: bold;
+        }
+        .btn-export {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            line-height: 1.3;
+        }
+        .btn-export:active {
+            background-color: #218838;
+        }
+        .meta-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .input-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-box label {
+            font-size: 12.5px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .input-box input, .input-box select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13.5px;
+            background-color: #fff;
+        }
+        .nfc-input-group {
+            display: flex;
+            gap: 4px;
+        }
+        .nfc-input-group input {
+            flex: 1;
+            min-width: 0;
+        }
+        .btn-nfc {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 6px 8px;
+            font-size: 11.5px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        .btn-nfc:active {
+            background-color: #004085;
+        }
+        .date-select-group {
+            display: flex;
+            gap: 4px;
+        }
+        .date-select-group select {
+            padding: 8px 4px;
+            font-size: 12.5px;
+            flex: 1;
+        }
+        .section-title {
+            background: #e9ecef;
+            padding: 6px 10px;
+            font-weight: bold;
+            font-size: 13.5px;
+            border-left: 4px solid #0056b3;
+            margin: 15px 0 10px 0;
+            line-height: 1.35;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+            font-size: 12.5px;
+            line-height: 1.35;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .en-sub {
+            display: block;
+            font-size: 11.5px;
+            color: #666;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+        th .en-sub {
+            font-weight: bold;
+            color: #555;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .verdict-area {
+            background: #e8f4fd;
+            border: 1px solid #b8daff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .verdict-area .verdict-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #004085;
+            display: block;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .verdict-options {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            flex-wrap: wrap;
+        }
+        .verdict-options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .photo-area {
+            margin-top: 15px;
+            border: 1px dashed #ccc;
+            padding: 12px;
+            border-radius: 6px;
+            background: #fafafa;
+            text-align: center;
+        }
+        .photo-controls {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-camera {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            font-size: 12.5px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-camera:active {
+            background-color: #138496;
+        }
+        .btn-remove-photo {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            font-size: 12.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+        }
+        #photoPreviewContainer {
+            margin-top: 8px;
+            display: none;
+        }
+        #photoPreview {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            object-fit: contain;
+        }
+        .photo-placeholder-text {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+        .signature-area {
+            margin-top: 15px;
+            border: 1px dashed #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        canvas {
+            border: 1px solid #999;
+            background: #fff;
+            width: 100%;
+            height: 120px;
+            border-radius: 4px;
+            touch-action: none;
+        }
+        .btn-clear {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 11.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        .footer-note {
+            font-size: 11px;
+            color: #777;
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="checklist">
+    <div class="header">
+        <h2>全身式安全帶安全檢查表</h2>
+        <div class="sub-h2">Full Body Harness Safety Inspection Checklist</div>
+        <div class="project-title">項目名稱 Project: MTR Contract 1801 Hung Shui Kiu Station</div>
+    </div>
+
+    <button type="button" class="btn-export" onclick="exportAsImage()" data-html2canvas-ignore="true">📤 產生圖片並儲存/分享至相簿<br>Generate Image &amp; Save / Share to Photos</button>
+
+    <div class="meta-group">
+        <div class="input-box">
+            <label>配帶工人姓名 Worker Name：</label>
+            <input type="text" placeholder="請輸入姓名 / Enter Name">
+        </div>
+        <div class="input-box">
+            <label>安全帶編號 Harness ID：</label>
+            <div class="nfc-input-group">
+                <input type="text" id="harnessId" placeholder="輸入或掃描 / ID or NFC">
+                <button type="button" class="btn-nfc" onclick="readNFC()" data-html2canvas-ignore="true">📶 讀取 NFC<br>Scan NFC</button>
+            </div>
+        </div>
+        <div class="input-box" style="grid-column: span 2;">
+            <label>檢查日期 Inspection Date：</label>
+            <div class="date-select-group">
+                <select id="yearSelect">
+                    <option value="">年 Year</option>
+                </select>
+                <select id="monthSelect">
+                    <option value="">月 Month</option>
+                </select>
+                <select id="daySelect">
+                    <option value="">日 Day</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">1. 安全帶檢查項目 Full Body Harness Inspection Items</div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 48%;">檢查細項<span class="en-sub">Inspection Item</span></th>
+                <th style="width: 32%;">結果<span class="en-sub">Result</span></th>
+                <th style="width: 20%;">備註<span class="en-sub">Remarks</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>織帶（是否有剪痕、磨損、化學腐蝕）<span class="en-sub">Webbing (No cuts, abrasion, or chemical damage)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="h1" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="h1" value="bad"> 不良 Defect</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+            <tr>
+                <td>金屬扣環及D型環（有無變形、裂痕、鏽蝕）<span class="en-sub">Buckles &amp; D-Rings (No deformation, cracks, or rust)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="h2" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="h2" value="bad"> 不良 Defect</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+            <tr>
+                <td>縫合處（有無脫線、斷線）<span class="en-sub">Stitching (No loose, pulled, or broken threads)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="h3" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="h3" value="bad"> 不良 Defect</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">2. 尾繩（繫繩及緩衝器）檢查項目 Lanyard &amp; Shock Absorber Inspection</div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 48%;">檢查細項<span class="en-sub">Inspection Item</span></th>
+                <th style="width: 32%;">結果<span class="en-sub">Result</span></th>
+                <th style="width: 20%;">備註<span class="en-sub">Remarks</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>安全繩主體（有無磨損、斷股、扭結）<span class="en-sub">Lanyard Body (No wear, broken strands, or kinks)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="r1" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="r1" value="bad"> 不良 Defect</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+            <tr>
+                <td>掛鉤及鎖扣（自動閉鎖功能正常、開關順暢）<span class="en-sub">Snap Hooks &amp; Carabiners (Self-locking &amp; smooth gate)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="r2" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="r2" value="bad"> 不良 Defect</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+            <tr>
+                <td>防墜緩衝包（有無撕裂、拉伸、開啟痕跡）<span class="en-sub">Shock Absorber Pack (No tearing, elongation, or deployment)</span></td>
+                <td>
+                    <div class="radio-group">
+                        <label><input type="radio" name="r3" value="good"> 良好 Good</label>
+                        <label><input type="radio" name="r3" value="bad"> 不良 Defect</label>
+                        <label><input type="radio" name="r3" value="na"> 不適用 N/A</label>
+                    </div>
+                </td>
+                <td><input type="text" style="width:100%; border:none;" placeholder="-"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">3. 檢查結果總結 Inspection Result Summary</div>
+    <div class="verdict-area">
+        <span class="verdict-title">檢查結果：安全帶是否可以使用？<br>Inspection Result: Is the safety harness safe for use?</span>
+        <div class="verdict-options">
+            <label><input type="radio" name="finalVerdict" value="yes" style="transform: scale(1.2); margin-right: 6px;"> ✅ 可以使用 (Pass)</label>
+            <label><input type="radio" name="finalVerdict" value="no" style="transform: scale(1.2); margin-right: 6px;"> ❌ 不可使用 (Fail)</label>
+        </div>
+    </div>
+
+    <div class="section-title">4. 安全帶實物相片紀錄 Harness Photo Record</div>
+    <div class="photo-area" id="photoSection">
+        <div class="photo-controls" data-html2canvas-ignore="true">
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handlePhotoUpload(event)">
+            <button type="button" class="btn-camera" onclick="document.getElementById('cameraInput').click()">📸 拍攝 / 上載安全帶相片 Take / Upload Photo</button>
+            <button type="button" class="btn-remove-photo" id="removePhotoBtn" onclick="removePhoto()">移除相片 Remove</button>
+        </div>
+        <div class="photo-placeholder-text" id="photoPlaceholder" data-html2canvas-ignore="true">尚未拍攝相片（點擊上方按鈕啟動手機相機）<br>No photo taken yet (Tap button above to launch camera)</div>
+        <div id="photoPreviewContainer">
+            <img id="photoPreview" src="" alt="安全帶檢查相片 Harness Inspection Photo">
+        </div>
+    </div>
+
+    <div class="signature-area">
+        <div class="input-box" style="margin-bottom: 10px;">
+            <label>檢查人員姓名 Inspector Name：</label>
+            <input type="text" placeholder="請輸入檢查人員姓名 / Enter Inspector Name">
+        </div>
+        <div style="overflow: hidden; margin-bottom: 6px;">
+            <label style="font-size: 13px; font-weight: bold; float: left;">檢查人員簽名 Inspector Signature：</label>
+            <button type="button" class="btn-clear" onclick="clearSignature()" data-html2canvas-ignore="true">清除重簽 Clear</button>
+        </div>
+        <div>
+            <canvas id="sigCanvas"></canvas>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        註：使用前必須確保安全帶及尾繩狀況良好。如發現任何缺陷，應立即停止使用並上報。<br>
+        Note: Ensure harness and lanyard are in good condition before use. If any defect is found, stop using immediately and report.
+    </div>
+</div>
+
+<script>
+    const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
+    const daySelect = document.getElementById('daySelect');
+
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear - 1; y <= currentYear + 5; y++) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y + '年 / ' + y;
+        yearSelect.appendChild(opt);
+    }
+
+    for (let m = 1; m <= 12; m++) {
+        const opt = document.createElement('option');
+        opt.value = m < 10 ? '0' + m : m;
+        opt.textContent = m + '月 / ' + (m < 10 ? '0' + m : m);
+        monthSelect.appendChild(opt);
+    }
+
+    for (let d = 1; d <= 31; d++) {
+        const opt = document.createElement('option');
+        opt.value = d < 10 ? '0' + d : d;
+        opt.textContent = d + '日 / ' + (d < 10 ? '0' + d : d);
+        daySelect.appendChild(opt);
+    }
+
+    function handlePhotoUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const maxWidth = 800;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > maxWidth) {
+                    height = Math.round((height * maxWidth) / width);
+                    width = maxWidth;
+                }
+
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = width;
+                tempCanvas.height = height;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.drawImage(img, 0, 0, width, height);
+
+                const compressedDataUrl = tempCanvas.toDataURL('image/jpeg', 0.85);
+                
+                document.getElementById('photoPreview').src = compressedDataUrl;
+                document.getElementById('photoPreviewContainer').style.display = 'block';
+                document.getElementById('photoPlaceholder').style.display = 'none';
+                document.getElementById('removePhotoBtn').style.display = 'inline-block';
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removePhoto() {
+        document.getElementById('cameraInput').value = '';
+        document.getElementById('photoPreview').src = '';
+        document.getElementById('photoPreviewContainer').style.display = 'none';
+        document.getElementById('photoPlaceholder').style.display = 'block';
+        document.getElementById('removePhotoBtn').style.display = 'none';
+    }
+
+    const canvas = document.getElementById('sigCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 2;
+    }
+
+    // 網頁載入時：初始化簽名板 + 自動讀取網址參數 ?id=...
+    window.onload = function() {
+        resizeCanvas();
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const harnessIdFromUrl = urlParams.get('id');
+        if (harnessIdFromUrl) {
+            document.getElementById('harnessId').value = harnessIdFromUrl.trim();
+        }
+    };
+
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? (e.touches[1] ? e.touches[1].clientY : e.touches[0].clientY) : e.clientY;
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
+
+    function startDrawing(e) {
+        isDrawing = true;
+        const pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+    }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+
+    function clearSignature() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    async function readNFC() {
+        if ('NDEFReader' in window) {
+            try {
+                const ndef = new NDEFReader();
+                await ndef.scan();
+                alert('請將手機背面靠近安全帶的 NFC 晶片...\nPlease hold the back of your phone near the harness NFC tag...');
+
+                ndef.addEventListener("reading", ({ message, serialNumber }) => {
+                    let nfcId = serialNumber;
+                    
+                    if (message.records.length > 0) {
+                        for (const record of message.records) {
+                            if (record.recordType === "text") {
+                                const textDecoder = new TextDecoder(record.encoding);
+                                nfcId = textDecoder.decode(record.data);
+                            }
+                        }
+                    }
+
+                    if (nfcId) {
+                        document.getElementById('harnessId').value = nfcId;
+                        alert('成功讀取 NFC 序列號 / NFC Serial Read: ' + nfcId);
+                    }
+                });
+
+                ndef.addEventListener("readingerror", () => {
+                    alert("無法讀取 NFC 晶片，請再試一次。\nCannot read NFC tag, please try again.");
+                });
+
+            } catch (error) {
+                alert("NFC 啟動失敗 / NFC Failed: " + error);
+            }
+        } else {
+            alert("您的裝置或瀏覽器不支援 Web NFC API（建議使用 Android 手機的 Chrome 瀏覽器）。您仍可手動輸入編號。\nYour device/browser does not support Web NFC API (Android Chrome recommended). You can still enter the ID manually.");
+        }
+    }
+
+    function exportAsImage() {
+        const harnessIdInput = document.getElementById('harnessId').value.trim();
+        const fileName = harnessIdInput ? `Harness_Checklist_${harnessIdInput}.png` : 'Harness_Checklist_MTR_1801.png';
+        
+        const element = document.getElementById('checklist');
+        html2canvas(element, { scale: 2, useCORS: true }).then(canvas => {
+            canvas.toBlob(async function(blob) {
+                const file = new File([blob], fileName, { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({
+                            files: [file],
+                            title: '全身式安全帶安全檢查表 Full Body Harness Safety Checklist',
+                            text: 'MTR Contract 1801 Hung Shui Kiu Station - Harness Inspection Record'
+                        });
+                        return;
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            console.log('分享取消或失敗，改用下載模式');
+                        } else {
+                            return;
+                        }
+                    }
+                }
+
+                const link = document.createElement('a');
+                link.download = fileName;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            }, 'image/png');
+        });
+    }
+</script>
+
+</body>
+</html>
